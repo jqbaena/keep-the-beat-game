@@ -71,7 +71,7 @@ Game.updateAll(){
 Game.drawAll(){
 }
 ```
-###player.js
+### player.js
 
 ```
 function player(){
