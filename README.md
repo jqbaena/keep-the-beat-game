@@ -50,12 +50,8 @@ Game.prototype.startLoop(){
 Game.prototype.finish(){
   this.counter
 }
-
-Game.clearAll(){
-}
-
-Game.drawAll(){
-}
+Game.clearAll()
+Game.drawAll()
 
 ```
 ### player.js
