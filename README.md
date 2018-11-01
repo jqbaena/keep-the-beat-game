@@ -1,7 +1,7 @@
 # KEEP THE BEAT GAME
 
 ## Description
-Keep the beat is a game that merges different styles of gaming. Platformers, runners and rythm games. The player has to run to try to reach the end of the level, platforms, enemies and other random hazards will put you in trouble.
+Keep the beat is a game that merges different styles of gaming. Platformers, runners and rythm games. The player has to try to reach the end of the level, platforms, enemies and other random hazards will put you in trouble.
 
 
 ## MVP (CANVAS)
@@ -159,6 +159,8 @@ Definition of the different states and their transition (transition functions)
 
 ## Task
 
+- create javascript file
+- create the main   
 
 
 ## Links
