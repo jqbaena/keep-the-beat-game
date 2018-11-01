@@ -33,8 +33,12 @@ Game.prototype.start{
 }
 
 Game.prototype.runLevel(){
+  // update
   obstacles.update() 
   player.update()
+  // draw
+  obstacles.draw()
+  player.draw()
 }
 
 Game.prototype.update(){
@@ -42,6 +46,8 @@ Game.prototype.update(){
   start
   reset
   pause
+  // loop
+  self.runLevel()
 }
 
 Game.prototype.pause{
@@ -83,6 +89,11 @@ Player.prototype.update(){
   self.alive  
 }
 
+Player.prototype.jump(Obstacle){
+  var self = this
+  self.y
+}
+
 Player.prototype.checkCollision(Obstacle){
   var self = this
   self.size
@@ -90,8 +101,12 @@ Player.prototype.checkCollision(Obstacle){
   obstacle.size
 }
 
-Player.prototype.draw(){
+Player.prototype.isVisible(){
+  self.x
+}
 
+Player.prototype.draw(){
+  self.
 }
 
 ```
@@ -100,6 +115,7 @@ Player.prototype.draw(){
 ```
 function Obstacles(){
   var self = this
+  self.canvas
   self.x
   self.y
   self.size
@@ -107,8 +123,15 @@ function Obstacles(){
   self.type
 }
 
+Obstacles.prototype.isVisible(){
+  self.canvas
+  self.x
+}
+
 Obstacles.prototype.draw(){
 }
+
+
 
 Obstacles.prototype.update(){
   self.x
