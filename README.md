@@ -101,7 +101,7 @@ Player.prototype.checkCollision(Obstacle){
   obstacle.size
 }
 
-Player.prototype.isVisible(){
+Player.prototype.isInScreen(){
   self.x
 }
 
@@ -123,14 +123,13 @@ function Obstacles(){
   self.type
 }
 
-Obstacles.prototype.isVisible(){
+Obstacles.prototype.isInScreen(){
   self.canvas
   self.x
 }
 
 Obstacles.prototype.draw(){
 }
-
 
 
 Obstacles.prototype.update(){
@@ -141,16 +140,25 @@ Obstacles.prototype.update(){
 ``` 
 
 ## States y States Transitions
+
 Definition of the different states and their transition (transition functions)
 
 - splashScreen
-- gameScreen
+      - buildSplash
+      - event listener
+- gameScreen: 
+      - destroySplash
+      - create the game
 - gameoverScreen
+      - destroyGameScreen 
+      - build GameOver
 - winScreen
+      - destroyGameScreen
+      - build winScreen
 
 
 ## Task
-Task definition in order of priority
+
 
 
 ## Links
