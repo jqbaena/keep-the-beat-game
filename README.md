@@ -16,97 +16,74 @@ The MVP version is a simple one, the player jumps the platforms.
 
 ## Data structure
 ### game.js
+
 ```
 function Game(){
-  var self = this
-  self.counter
-  self.canvas
-  self.state
+  this.counter
+  this.canvas
+  this.state
 }
 
 Game.prototype.start{
-  self.canvas
-  self.state
+  buildDom()
+  this.canvas
+  this.state
   player = new Player()
   obstacles = new Obstacles();
-  self.runLevel()
+  this.startLoop()
 }
 
-Game.prototype.runLevel(){
-  // update
-  obstacles.update() 
-  player.update()
-  // draw
-  obstacles.draw()
-  player.draw()
+Game.prototype.startLoop(){
+  ctx 
+  // loop{
+    // update
+    this.updateAll()
+    // clear
+    this.clearAll()
+    // draw
+    this.drawAll()
+  }
+
+  requestAnimationFrame(loop);
 }
 
-Game.prototype.update(){
-  // control
-  start
-  reset
-  pause
-  // loop
-  self.runLevel()
-}
-
-Game.prototype.pause{
-  self.state
-}
-
-Game.prototype.reset{
-  self.state   
-}
-
-Game.prototype.finish{
-  self.counter
+Game.prototype.finish(){
+  this.counter
 }
 
 Game.clearAll(){
 }
 
-Game.updateAll(){
-}
-
 Game.drawAll(){
 }
+
 ```
 ### player.js
 
 ```
 function player(){
-  var self = this
-  self.x
-  self.y
-  self.size
-  self.speedY
-  self.alive
+  this.x
+  this.y
+  this.size
+  this.speedY
+  this.alive
 }
 
 Player.prototype.update(){
-  var self = this
-  self.y
-  self.alive  
+  this.y
+  this.alive  
 }
 
 Player.prototype.jump(Obstacle){
-  var self = this
-  self.y
+  this.y
 }
 
 Player.prototype.checkCollision(Obstacle){
-  var self = this
-  self.size
-  self.y
-  obstacle.size
-}
-
-Player.prototype.isInScreen(){
-  self.x
+  this.size
+  this.y
 }
 
 Player.prototype.draw(){
-  self.
 }
 
 ```
@@ -114,27 +91,25 @@ Player.prototype.draw(){
 
 ```
 function Obstacles(){
-  var self = this
-  self.canvas
-  self.x
-  self.y
-  self.size
-  self.speedX
-  self.type
+  this.canvas
+  this.x
+  this.y
+  this.size
+  this.speedX
+  this.type
 }
 
 Obstacles.prototype.isInScreen(){
-  self.canvas
-  self.x
+  this.canvas
+  this.x
 }
 
 Obstacles.prototype.draw(){
 }
 
-
 Obstacles.prototype.update(){
-  self.x
-  self.speedX
+  this.x
+  this.speedX
 }
 
 ``` 
