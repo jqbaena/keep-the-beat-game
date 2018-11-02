@@ -59,6 +59,7 @@ Game.drawAll()
 function player(){
   this.x
   this.y
+  this.canvas
   this.size
   this.speedY
   this.alive
@@ -129,8 +130,22 @@ Definition of the different states and their transition (transition functions)
 
 ## Task
 
-- create javascript file
-- create the main   
+- create javascript files & starting code
+  - main.js
+  - game.js
+  - player.js
+  - obstacle.js
+- work on the logic of the game
+  - game loop condition
+  - player jump 
+  - obstacles
+  - collision
+  - scenario 
+  - win 
+  - game over
+- design
+  - obstacles scenario
+  - gaming song 
 
 
 ## Links
