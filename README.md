@@ -25,7 +25,6 @@ function Game(){
 }
 
 Game.prototype.start{
-  buildDom()
   this.canvas
   this.state
   player = new Player()
