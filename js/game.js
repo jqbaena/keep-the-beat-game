@@ -2,10 +2,10 @@
 
 function Game(canvasElement) {
     this.player = null;
-    this.obstacles = [];
+    this.obstacles = null;
     this.canvasElement = canvasElement;
     this.initialPositionPlayer = {
-      x: 120,
+      x: 240,
       y: this.canvasElement.height - 50
     }
     this.gameIsOver = false;
@@ -19,11 +19,12 @@ Game.prototype.start = function() {
 Game.prototype.startLoop = function() {
 
     this.player = new Player(this.canvasElement, this.initialPositionPlayer);
+    this.obstacles = new Obstacle(this.canvasElement);
 
     this.handleKeyUp = function(event){
       if (event.key === " "){
         console.log('jump')
-        this.player.jump();
+        this.player.jump(this.obstacles);
       }
     }.bind(this)
     
@@ -72,6 +73,7 @@ Game.prototype.clearAll = function(){
 
 Game.prototype.drawAll = function(){
   this.player.draw();
+  this.obstacles.draw();
 }
 
 Game.prototype.onGameOverCallback = function(callback) {
@@ -83,5 +85,6 @@ Game.prototype.finishGame = function() {
 }
 
 Game.prototype.updateAll = function() {
-  this.player.update();
+  this.player.update(this.obstacles);
+  this.obstacles.update();
 }
