@@ -2,13 +2,14 @@
 
 function Game(canvasElement) {
     this.player = null;
-    this.obstacles = null;
+    this.obstacles = [];
     this.canvasElement = canvasElement;
     this.initialPositionPlayer = {
       x: 240,
       y: this.canvasElement.height - 50
     }
     this.gameIsOver = false;
+    this.obstaclesIndex = 0;
 }
 
 Game.prototype.start = function() {
@@ -16,30 +17,44 @@ Game.prototype.start = function() {
     this.startLoop();
 }
 
-Game.prototype.startLoop = function() {
+Game.prototype.startLoop = function(){
 
     this.player = new Player(this.canvasElement, this.initialPositionPlayer);
-    this.obstacles = new Obstacle(this.canvasElement);
+
+    // console.log(platforms);
+
+    // for(var index in platforms){
+    //   this.obstacles.push(new Obstacle(this.canvasElement));
+    // }
+
+    this.obstacles.push(new Obstacle(this.canvasElement, platforms[this.obstaclesIndex]));
+    this.obstaclesIndex++;
+
+    this.obstacles.push(new Obstacle(this.canvasElement, platforms[this.obstaclesIndex]));
+    this.obstaclesIndex++;
+
+    this.obstacles.push(new Obstacle(this.canvasElement, platforms[this.obstaclesIndex]));
+    this.obstaclesIndex++;
+
+    this.obstacles.push(new Obstacle(this.canvasElement, platforms[this.obstaclesIndex]));
+    this.obstaclesIndex++;
 
     this.handleKeyUp = function(event){
       if (event.key === " "){
-        console.log('jump')
         this.player.jump(this.obstacles);
       }
     }.bind(this)
     
     document.addEventListener('keyup', this.handleKeyUp);
 
-    var loop = function() {
-
+    var loop = function(){
       this.clearAll();
       this.updateAll();
       this.drawAll();
 
-      if (!this.gameIsOver) {
+      if (!this.gameIsOver){
         requestAnimationFrame(loop);
       }
-      
     }.bind(this);
 
     loop();
@@ -72,19 +87,23 @@ Game.prototype.clearAll = function(){
 }
 
 Game.prototype.drawAll = function(){
+  this.obstacles.forEach(function(item){
+    item.draw();
+  });
   this.player.draw();
-  this.obstacles.draw();
 }
 
 Game.prototype.onGameOverCallback = function(callback) {
   this.gameOverCallback = callback;
 }
 
-Game.prototype.finishGame = function() {
+Game.prototype.finishGame = function(){
   this.gameOverCallback();
 }
 
 Game.prototype.updateAll = function() {
+  this.obstacles.forEach(function(item){
+    item.update();
+  });
   this.player.update(this.obstacles);
-  this.obstacles.update();
 }
