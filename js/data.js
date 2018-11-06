@@ -56,13 +56,13 @@ var platforms = [
         y: 400,
     },
     {
-        width: 300,
+        width: 800,
         height: 100,
-        x: 2200,
-        y: 500,
+        x: 3000,
+        y: 100,
     },
     {
-        width: 300,
+        width: 800,
         height: 100,
         x: 3000,
         y: 400,

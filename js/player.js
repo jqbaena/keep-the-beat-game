@@ -19,6 +19,7 @@ Player.prototype.jump = function(obstacles){
 
     if(sliding || (this.y + this.size >= this.canvasElement.height)){
         this.jumping = true;
+        if(sliding){this.speedY2 = 0;}
     }
 }
 
@@ -75,11 +76,13 @@ Player.prototype.update = function(obstacles){
             this.jumping = false;
             this.speedY = -20;
             this.y = obstacles[collisionResult.index].y - this.size;
+            this.speedY2 = 0;
         }
         // el jugador golpea la plataforma por debajo
         else if(collisionResult.type === 2){
             this.jumping = false;
             this.speedY = -20;
+            this.speedY2 = 0;
             this.y = obstacles[collisionResult.index].y + obstacles[collisionResult.index].height;
         // el jugador ha tocado el suelo
         }
@@ -87,21 +90,25 @@ Player.prototype.update = function(obstacles){
             this.jumping = false;
             this.speedY = -20;
             this.y = this.canvasElement.height - this.size;
+            this.speedY2 = 0;
         }
     }
-
+    
     // hace caer al jugador cuando sale de la plataforma 
     // hace caer al jugador cuando choca contra la parte de abajo de la plataforma
         /*no salto*/      /*no colisiono*/                     /*no toco el suelo*/                         /* he tocado el techo*/     
-    if(!this.jumping && collisionResult.type === 0 && (this.y !== this.canvasElement.height - this.size) || collisionResult.type === 2){ 
-        this.speedY2 += 1;
-        this.y += this.speedY2;
+    if(!this.jumping && collisionResult.type === 0 && (this.y !== this.canvasElement.height - this.size) || collisionResult.type === 2){    
+        if (collisionResult.type === 2){
+            this.jumping = false;
+            this.speedY2 = 0;
+        }
         if (this.y + this.size >= this.canvasElement.height){
             this.speedY2 = 0;
-            this.y = this.canvasElement.height - this.size;
-            this.jumping = false;
             this.speedY = -20;
+            this.y = this.canvasElement.height - this.size;      
         }
+        this.speedY2 += 1;
+        this.y += this.speedY2;
     }
 
     // una plataforma empuja el player
@@ -110,11 +117,17 @@ Player.prototype.update = function(obstacles){
     // tengo que salir de la colision para poder volver al sitio inicial
     }else if( this.x < this.initialX){
         this.x += 1;
+    // si vuelvo a la posicion inicial 
     }else{
         this.speedX = 0;
     }  
-}
 
+    // reseteo de gravedad
+    if (collisionResult.type === 1)
+    {
+        this.speedY2 = 0;
+    }
+}
 
 Player.prototype.draw = function() {
     this.ctx.fillRect(this.x, this.y, this.size, this.size);
