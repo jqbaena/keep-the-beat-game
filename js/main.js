@@ -37,7 +37,19 @@ function main(){
         gameScreen = buildDOM(`
           <main>
             <h1>Game</h1>
-            <canvas width="1280px" height="580px"></canvas>   
+            <canvas width="1280px" height="580px"></canvas> 
+            <div style="display:none;">
+            <img id="source" src="img/land.png"
+            width="1920" height="1080">
+            <img id="source2" src="img/decor.png"
+            width="1920" height="1080">
+            <img id="source3" src="img/sea.png"
+            width="1920" height="1080">
+            <img id="source4" src="img/sky.png"
+            width="1920" height="1080">
+            <img id="source5" src="img/cloud.png"
+            width="1920" height="1080">
+        </div>  
           </main>
         `);
 
