@@ -73,6 +73,7 @@ function main(){
    
     function destroyGameScreen() {
         gameScreen.remove();
+        buildGameOver();
     }
 
     function buildGameOver(){
@@ -83,9 +84,7 @@ function main(){
         `);
         document.body.prepend(gameOver);
     }
-
 }
-
 window.addEventListener('load', main);
 
 

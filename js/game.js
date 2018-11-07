@@ -12,18 +12,19 @@ function Game(canvasElement) {
     this.gameIsOver = false;
     this.obstaclesIndex = 0;
     this.ctx = this.canvasElement.getContext("2d");
-    this.img = document.getElementById('source');
-    this.img2 = document.getElementById('source2');
-    this.img3 = document.getElementById('source3');
-    this.img4 = document.getElementById('source4');
-    this.img5 = document.getElementById('source5');
+    this.sand = document.getElementById('source');
+    this.decor = document.getElementById('source2');
+    this.sea = document.getElementById('source3');
+    this.sky = document.getElementById('source4');
+    this.cloud = document.getElementById('source5');
     this.imgX = 0;
     this.imgX2 = this.canvasElement.width;
     this.imgX3 = 0;
     this.imgX4 = this.canvasElement.width;
+    this.imgX5 = 0;
+    this.imgX6 =  this.canvasElement.width;
     this.imgY = 0;
 }
-
 Game.prototype.start = function() {
     this.ctx = this.canvasElement.getContext('2d');
     this.startLoop();
@@ -93,7 +94,6 @@ Game.prototype.startLoop = function(){
       if (!this.gameIsOver) {
         requestAnimationFrame(loop);
       }
-  
     }.bind(this);
   
     loop();*/
@@ -114,7 +114,6 @@ Game.prototype.drawAll = function(){
   this.enemies.forEach(function(item){
     item.draw();
   });
- 
 }
 Game.prototype.onGameOverCallback = function(callback) {
   this.gameOverCallback = callback;
@@ -123,29 +122,41 @@ Game.prototype.finishGame = function(){
   this.gameOverCallback();
 }
 Game.prototype.updateAll = function(){
+
   this.obstacles.forEach(function(item){
     item.update();
   });
-  this.player.update(this.obstacles, this.enemies);
+
+  if(this.player.update(this.obstacles, this.enemies)){
+    this.gameIsOver = true;
+    this.finishGame();
+  }
   this.enemies.forEach(function(item){
     item.update();
   });
   this.updateCanvas();
 }
+
 Game.prototype.checkAllCollisions = function() {
   this.enemies.forEach(function(enemy, index){
-    if (this.player.collidesWithEnemy(enemy)) {
+    if (this.player.collidesWithEnemy(enemy) === 2){
         this.enemies.splice(index, 1);
-        console.log("true");
     }
-  }.bind(this)); 
+    else if(this.player.collidesWithEnemy(enemy) === 1){
+      this.gameIsOver = true;
+        this.finishGame();
+    }
+    }.bind(this)); 
 }
-
 Game.prototype.updateCanvas = function() {
-    this.imgX-=2;
-    this.imgX2-=2;
-    this.imgX3-=1;
-    this.imgX4-=1;
+
+    this.imgX -= 2;
+    this.imgX2 -= 2;
+    this.imgX3 -= 1;
+    this.imgX4 -= 1;
+    this.imgX5 -= 2.5;
+    this.imgX6 -= 2.5;
+
     if(this.imgX <= -this.canvasElement.width){
       this.imgX = this.canvasElement.width;
     }
@@ -158,17 +169,22 @@ Game.prototype.updateCanvas = function() {
     if(this.imgX4 <= -this.canvasElement.width){
       this.imgX4 = this.canvasElement.width;
     }
+    if(this.imgX5 <= -this.canvasElement.width){
+      this.imgX5 = this.canvasElement.width;
+    }
+    if(this.imgX6 <= -this.canvasElement.width){
+      this.imgX6 = this.imgX5+this.canvasElement.width;
+    }
 }
-
 Game.prototype.drawCanvas = function(){
-    this.ctx.drawImage(this.img4,0,0, 1920, 1080, this.imgX, this.imgY, 1280, 580);
-    this.ctx.drawImage(this.img4,0,0, 1920, 1080, this.imgX2, this.imgY, 1280, 580);
-    this.ctx.drawImage(this.img5,0,0, 1920, 1080, this.imgX3, this.imgY, 1280, 580);
-    this.ctx.drawImage(this.img5,0,0, 1920, 1080, this.imgX4, this.imgY, 1280, 580);
-    this.ctx.drawImage(this.img3,0,0, 1920, 1080, this.imgX, this.imgY, 1280, 580);
-    this.ctx.drawImage(this.img3,0,0, 1920, 1080, this.imgX2, this.imgY, 1280, 580);
-    this.ctx.drawImage(this.img,0,0, 1920, 1080, this.imgX, this.imgY, 1280, 580);
-    this.ctx.drawImage(this.img,0,0, 1920, 1080, this.imgX2, this.imgY, 1280, 580);
-    this.ctx.drawImage(this.img2,0,0, 1920, 1080, this.imgX, this.imgY, 1280, 580);
-    this.ctx.drawImage(this.img2,0,0, 1920, 1080, this.imgX2, this.imgY, 1280, 580);
+    this.ctx.drawImage(this.sky,0,0, 1920, 1080, this.imgX, this.imgY, 1280, 580);
+    this.ctx.drawImage(this.sky,0,0, 1920, 1080, this.imgX2, this.imgY, 1280, 580);
+    this.ctx.drawImage(this.cloud,0,0, 1920, 1080, this.imgX3, this.imgY, 1280, 580);
+    this.ctx.drawImage(this.cloud,0,0, 1920, 1080, this.imgX4, this.imgY, 1280, 580);
+    this.ctx.drawImage(this.sea,0,0, 1920, 1080, this.imgX, this.imgY, 1280, 580);
+    this.ctx.drawImage(this.sea,0,0, 1920, 1080, this.imgX2, this.imgY, 1280, 580);
+    this.ctx.drawImage(this.sand,0,0, 1920, 1080, this.imgX5, this.imgY, 1280, 580);
+    this.ctx.drawImage(this.sand,0,0, 1920, 1080, this.imgX6, this.imgY, 1280, 580);
+    this.ctx.drawImage(this.decor,0,0, 1920, 1080, this.imgX5, this.imgY, 1280, 580);
+    this.ctx.drawImage(this.decor,0,0, 1920, 1080, this.imgX6, this.imgY, 1280, 580);
 }

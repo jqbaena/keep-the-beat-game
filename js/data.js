@@ -54,9 +54,9 @@ var platforms = [
     },
     {
         width: 300,
-        height: 300,
-        x: 1200,
-        y: 400,
+        height: 50,
+        x: 1400,
+        y: canvasHeight - 50,
     },
     {
         width: 800,
@@ -77,8 +77,9 @@ var stageOneEnemies = [
     {
         width: 30,
         height: 100,
-        x: 1300,
+        x: 100,
         y: 300,
+        type:0
         /*
         compound: false,
         object: {
