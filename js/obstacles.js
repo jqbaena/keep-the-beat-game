@@ -11,6 +11,8 @@ function Obstacle(canvasElement, obstacleData) {
   this.x = obstacleData.x;
   this.y = obstacleData.y;
   this.type = 0;
+  this.img = new Image();
+  this.img.src = 'img/pad.png';
 }
 
 Obstacle.prototype.update = function(){
@@ -22,6 +24,6 @@ Obstacle.prototype.update = function(){
 }
 
 Obstacle.prototype.draw = function() {
-  this.ctx.fillRect(this.x, this.y, this.width, this.height);
+  this.ctx.drawImage(this.img, this.x, this.y, 209, 56);
 }
 

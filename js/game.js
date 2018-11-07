@@ -105,12 +105,13 @@ Game.prototype.clearAll = function(){
     return enemy.isInCanvas();
   });
 }
+
 Game.prototype.drawAll = function(){
   this.drawCanvas();
+  this.player.draw();
   this.obstacles.forEach(function(item){
     item.draw();
   });
-  this.player.draw();
   this.enemies.forEach(function(item){
     item.draw();
   });

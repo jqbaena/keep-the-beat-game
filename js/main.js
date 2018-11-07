@@ -49,7 +49,7 @@ function main(){
             width="1920" height="1080">
             <img id="source5" src="img/cloud.png"
             width="1920" height="1080">
-        </div>  
+            </div>  
           </main>
         `);
 

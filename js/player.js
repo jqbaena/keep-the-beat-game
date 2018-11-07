@@ -87,7 +87,7 @@ Player.prototype.update = function(obstacles, enemies){
     // logica de salto
     if (this.jumping){
         // acelera - desacelera
-        this.speedY += 1;
+        this.speedY += 1.05;
         this.y += this.speedY;
         // el jugador ha saltado a una plataforma
         if (collisionResult.type === 1 && this.speedY > 0){
@@ -125,7 +125,7 @@ Player.prototype.update = function(obstacles, enemies){
             this.speedY = -20;
             this.y = this.canvasElement.height - this.height;      
         }
-        this.speedY2 += 1;
+        this.speedY2 += 1.05;
         this.y += this.speedY2;
     }
 

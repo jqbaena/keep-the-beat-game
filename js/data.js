@@ -39,8 +39,8 @@ var canvasHeight = 580;
 
 var platforms = [
     {
-        width: 500,
-        height: 100,
+        width: 209,
+        height: 56,
         x: 300,
         y: 400,
         /*
@@ -53,20 +53,20 @@ var platforms = [
         }*/
     },
     {
-        width: 300,
-        height: 50,
+        width: 209,
+        height: 56,
         x: 1400,
         y: canvasHeight - 50,
     },
     {
-        width: 800,
-        height: 100,
+        width: 209,
+        height: 56,
         x: 3000,
         y: 100,
     },
     {
-        width: 800,
-        height: 100,
+        width: 209,
+        height: 56,
         x: 3000,
         y: 400,
     }
