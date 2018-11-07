@@ -14,10 +14,7 @@ function Player(canvasElement, initialPosition){
     this.ctx = this.canvasElement.getContext('2d');
     this.img = new Image();
     this.img.src = '';
-
-
 }
-
 Player.prototype.jump = function(obstacles){
     var collisionResult = this.checkCollision(obstacles);
     var sliding = collisionResult.type === 1;
@@ -68,10 +65,10 @@ Player.prototype.collidesWithEnemy = function(enemy){
     && ((this.y + this.height) > enemy.y);
     var topBottom = this.y === enemy.y + enemy.height || (this.y < (enemy.y + enemy.height) && this.y > enemy.y);
     var insideHeight =  this.y > enemy.y && ((this.y + this.height) < enemy.y + this.height) || // dentro 
-                        ((this.y + this.height) > enemy.y && (this.y + this.height) <= (enemy.y + enemy.height)) ||
+                        ((this.y + this.height) >= enemy.y && (this.y + this.height) <= (enemy.y + enemy.height)) ||
                         (this.y < (enemy.y + enemy.height))&& (this.y >= enemy.y);
 
-    if(insideWidth && aboveTop && enemy.type !== 0){
+    if(insideWidth && aboveTop && enemy.type !== 0 && enemy.type !== 1){
         type = 2;
     }
     else if(insideWidth && (topBottom || insideHeight)){

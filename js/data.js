@@ -75,9 +75,9 @@ var platforms = [
 
 var stageOneEnemies = [
     {
-        width: 30,
-        height: 100,
-        x: 100,
+        width: 86,
+        height: 46,
+        x: 400,
         y: 300,
         type:0
         /*
@@ -90,27 +90,31 @@ var stageOneEnemies = [
         }*/
     },
     {
-        width: 30,
-        height: 100,
+        width: 86,
+        height: 46,
         x: 1000,
-        y: canvasHeight - 100,
+        y: canvasHeight - 46,
+        type:1
     },
     {
-        width: 30,
-        height: 100,
+        width: 86,
+        height: 46,
         x: 3300,
         y: 300,
+        type:1
     },
     {
-        width: 30,
-        height: 100,
+        width: 86,
+        height: 46,
         x: 3600,
         y: 300,
+        type:0
     },
     {
-        width: 30,
-        height: 50,
+        width: 86,
+        height: 46,
         x: 2400,
-        y: canvasHeight - 50,
+        y: canvasHeight - 46,
+        type:0
     }
 ];

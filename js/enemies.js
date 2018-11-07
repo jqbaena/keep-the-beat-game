@@ -8,11 +8,13 @@ function Enemy(canvasElement, enemieData){
   this.x = enemieData.x;
   this.y = enemieData.y;
   // TYPE 1 = erizo
-  // TYPE 2 =
+  // TYPE 2 = 
   // TYPE 3 =
-  this.type = 0;
+  this.type = enemieData.type;
   this.img = new Image();
   this.img.src = 'img/spikemonster.png';
+  this.img2 = new Image();
+  this.img2.src = 'img/spikemonster2.png';
 }
 
 Enemy.prototype.update = function(){
@@ -22,8 +24,11 @@ Enemy.prototype.update = function(){
 Enemy.prototype.draw = function(){
     this.ctx.fillStyle = "red";
     this.ctx.fillRect(this.x, this.y, this.width, this.height);
-    this.ctx.drawImage(this.img, this.x, this.y, 86, 46);
-    
+    if(this.type === 0){
+      this.ctx.drawImage(this.img, this.x, this.y, 86, 46);
+    }else if(this.type === 1){
+      this.ctx.drawImage(this.img2, this.x, this.y, 86, 46);
+    }
 }
 
 Enemy.prototype.isInCanvas = function(){
