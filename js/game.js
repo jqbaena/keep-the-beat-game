@@ -24,11 +24,19 @@ function Game(canvasElement) {
     this.imgX5 = 0;
     this.imgX6 =  this.canvasElement.width;
     this.imgY = 0;
+    this.currentFrame = 0;
+    this.audio = new Audio('audio/Thriller.mp3');
+   
 }
 Game.prototype.start = function() {
     this.ctx = this.canvasElement.getContext('2d');
     this.startLoop();
 }
+
+Game.prototype.updateFrames = function(){
+    this.currentFrame++;
+}
+
 Game.prototype.startLoop = function(){
 
     this.player = new Player(this.canvasElement, this.initialPositionPlayer);
@@ -39,19 +47,11 @@ Game.prototype.startLoop = function(){
     //   this.obstacles.push(new Obstacle(this.canvasElement));
     // }
 
-    this.obstacles.push(new Obstacle(this.canvasElement, platforms[this.obstaclesIndex]));
-    this.obstaclesIndex++;
 
-    this.obstacles.push(new Obstacle(this.canvasElement, platforms[this.obstaclesIndex]));
-    this.obstaclesIndex++;
+    for(var i = 0; i < platforms.length; i++){
+      this.obstacles.push(new Obstacle(this.canvasElement, platforms[i]));
+    }
 
-    this.obstacles.push(new Obstacle(this.canvasElement, platforms[this.obstaclesIndex]));
-    this.obstaclesIndex++;
-
-    this.obstacles.push(new Obstacle(this.canvasElement, platforms[this.obstaclesIndex]));
-    this.obstaclesIndex++;
-
-    
     for(var i = 0; i < stageOneEnemies.length; i++){
       this.enemies.push(new Enemy(this.canvasElement, stageOneEnemies[i]))
     }
@@ -60,9 +60,15 @@ Game.prototype.startLoop = function(){
       if (event.key === " "){
         this.player.jump(this.obstacles);
       }
+      else if (event.key === "a"){
+        this.player.attack();
+      }
+
     }.bind(this)
     
     document.addEventListener('keyup', this.handleKeyUp);
+
+    this.audio.play();
 
     var loop = function(){
       this.clearAll();
@@ -124,6 +130,7 @@ Game.prototype.finishGame = function(){
 }
 Game.prototype.updateAll = function(){
 
+  this.updateFrames();
   this.obstacles.forEach(function(item){
     item.update();
   });

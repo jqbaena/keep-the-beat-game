@@ -38,11 +38,13 @@ var canvasWidth = 1280;
 var canvasHeight = 580;
 
 var platforms = [
+
+    // PRIMERA PLATAFORMA
     {
-        width: 209,
+        width: 220,
         height: 56,
-        x: 300,
-        y: 400,
+        x: 1700,
+        y: canvasHeight - 100
         /*
         compound: false,
         object: {
@@ -53,68 +55,134 @@ var platforms = [
         }*/
     },
     {
-        width: 209,
+        width: 220,
         height: 56,
-        x: 1400,
-        y: canvasHeight - 50,
+        x: 1900,
+        y: canvasHeight - 100
+        /*
+        compound: false,
+        object: {
+            width: 0,
+            heigth: 0,
+            x: 0,
+            y: 0,
+        }*/
     },
     {
-        width: 209,
+        width: 220,
         height: 56,
-        x: 3000,
-        y: 100,
+        x: 2200,
+        y: canvasHeight - 100
+        /*
+        compound: false,
+        object: {
+            width: 0,
+            heigth: 0,
+            x: 0,
+            y: 0,
+        }*/
     },
     {
-        width: 209,
+        width: 220,
         height: 56,
-        x: 3000,
-        y: 400,
-    }
+        x: 2900,
+        y: canvasHeight - 100
+        /*
+        compound: false,
+        object: {
+            width: 0,
+            heigth: 0,
+            x: 0,
+            y: 0,
+        }*/
+    },
+    {
+        width: 220,
+        height: 56,
+        x: 4500,
+        y: canvasHeight - 100
+        /*
+        compound: false,
+        object: {
+            width: 0,
+            heigth: 0,
+            x: 0,
+            y: 0,
+        }*/
+    },
+    {
+        width: 220,
+        height: 56,
+        x: 4500,
+        y: canvasHeight - 100
+        /*
+        compound: false,
+        object: {
+            width: 0,
+            heigth: 0,
+            x: 0,
+            y: 0,
+        }*/
+    },
 
+    // SEGUNDA PLATAFORMA
+    {
+        width: 209,
+        height: 56,
+        x: 4709,
+        y: canvasHeight - 200,
+    },
+
+    // TERCERA PLATAFORMA
+    {
+        width: 209,
+        height: 56,
+        x: 4918,
+        y: canvasHeight - 200,
+    },
+    {
+        width: 209,
+        height: 56,
+        x: 4918 + 209,
+        y: canvasHeight - 200,
+    },
+    {
+        width: 209,
+        height: 56,
+        x: 4918 + 209 + 209,
+        y: canvasHeight - 200,
+    },
+    {
+        width: 209,
+        height: 56,
+        x: 4918 + 209 + 209 + 209,
+        y: canvasHeight - 200,
+    },
 ];
 
 var stageOneEnemies = [
+
+    // PRIMERA OLEADA
     {
-        width: 86,
-        height: 46,
-        x: 400,
-        y: 300,
+        width: 130,
+        height: 62,
+        x: 2200,
+        y: canvasHeight - 67,
         type:0
-        /*
-        compound: false,
-        object: {
-            width: 0,
-            heigth: 0,
-            x: 0,
-            y: 0,
-        }*/
     },
+    // SEGUNDA OLEADA
     {
-        width: 86,
-        height: 46,
-        x: 1000,
-        y: canvasHeight - 46,
-        type:1
-    },
-    {
-        width: 86,
-        height: 46,
-        x: 3300,
-        y: 300,
-        type:1
-    },
-    {
-        width: 86,
-        height: 46,
-        x: 3600,
-        y: 300,
+        width: 130,
+        height: 62,
+        x: 2800,
+        y: canvasHeight - 67,
         type:0
     },
     {
-        width: 86,
-        height: 46,
-        x: 2400,
-        y: canvasHeight - 46,
+        width: 130,
+        height: 62,
+        x: 3400,
+        y: canvasHeight - 67,
         type:0
     }
 ];

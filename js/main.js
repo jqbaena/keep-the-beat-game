@@ -19,7 +19,10 @@ function main(){
         splashScreen = buildDOM(`
           <main>
             <h1>Keep the beat</h1>
-            <button>Start</button>
+            <img id="title" src="img/title.png" width="464" height="85">
+            <div class="button">
+                <button>Start</button>
+            </div>
           </main>
         `)
         document.body.prepend(splashScreen);
@@ -80,6 +83,7 @@ function main(){
         gameOver = buildDOM(`
         <main>
           <h1>Game over</h1> 
+          <img id="gameover" src="img/Game-Over.png" width="480" height="79">
         </main>
         `);
         document.body.prepend(gameOver);

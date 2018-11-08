@@ -4,8 +4,8 @@ function Player(canvasElement, initialPosition){
     this.x = initialPosition.x;
     this.y = initialPosition.y;
     this.initialX = initialPosition.x;
-    this.height = 80;
-    this.width = 40
+    this.height = 2041/14;
+    this.width = 70;
     this.speedY = -20;
     this.speedY2 = 0;
     this.speedX = 1;
@@ -14,7 +14,21 @@ function Player(canvasElement, initialPosition){
     this.ctx = this.canvasElement.getContext('2d');
     this.img = new Image();
     this.img.src = '';
+    this.character = new Image();
+    this.character.src = 'img/character.png';
+    this.attacking = false;
+    this.attackImage = new Image();
+    this.attackImage.src = 'img/attack.png';
+    this.spriteWidth = 164; 
+    this.spriteHeight = 1980; 
+    this.frameCount = 0;
+    this.spriteFrames = 0;
+    this.countSprites = 0;
+    this.countSprites2 = 0;
+    this.spriteIndex = 14;
+    this.spriteIndex2 = 9;
 }
+
 Player.prototype.jump = function(obstacles){
     var collisionResult = this.checkCollision(obstacles);
     var sliding = collisionResult.type === 1;
@@ -40,6 +54,7 @@ Player.prototype.checkCollision = function(obstacles){
         var rightLeft = (this.x + this.width >= obstacle.x) && (this.x < obstacle.x) &&
          ((this.y + this.height <= obstacle.y + obstacle.height && this.y + this.height > obstacle.y) || 
          (this.y > obstacle.y && this.y  < (obstacle.y + obstacle.height)) ||
+         (obstacle.y >= this.y && obstacle.y + obstacle.height <= this.y + this.height) ||
          (this.y > obstacle.y && this.y + this.height < obstacle.y + obstacle.height));
 
         if(rightLeft){ // type 3 - colisiona la parte derecha del jugador con la parte izq de la plataforma
@@ -56,6 +71,13 @@ Player.prototype.checkCollision = function(obstacles){
 
     return typeIndex;
 }
+
+Player.prototype.attack = function(){
+    this.frameCount = 0;
+    this.attacking = true;
+}
+
+
 Player.prototype.collidesWithEnemy = function(enemy){
 
     var type = 0;
@@ -64,9 +86,10 @@ Player.prototype.collidesWithEnemy = function(enemy){
     var aboveTop = ((this.y + this.height) === enemy.y) || ((this.y + this.height) < enemy.y + enemy.height) 
     && ((this.y + this.height) > enemy.y);
     var topBottom = this.y === enemy.y + enemy.height || (this.y < (enemy.y + enemy.height) && this.y > enemy.y);
-    var insideHeight =  this.y > enemy.y && ((this.y + this.height) < enemy.y + this.height) || // dentro 
-                        ((this.y + this.height) >= enemy.y && (this.y + this.height) <= (enemy.y + enemy.height)) ||
-                        (this.y < (enemy.y + enemy.height))&& (this.y >= enemy.y);
+    var insideHeight =  ((this.y > enemy.y) && ((this.y + this.height) < enemy.y + this.height)) || // dentro 
+                        ((this.y + this.height) > enemy.y && ((this.y + this.height) <= (enemy.y + enemy.height + 2))) ||
+                        ((this.y < (enemy.y + enemy.height))&& (this.y >= enemy.y)) ||
+                        (enemy.y >= this.y && enemy.y + enemy.height <= this.y + this.height);
 
     if(insideWidth && aboveTop && enemy.type !== 0 && enemy.type !== 1){
         type = 2;
@@ -148,8 +171,41 @@ Player.prototype.update = function(obstacles, enemies){
 
     return (this.x < -this.width) || (this.collidesWithEnemy(enemies) === 1);
 }
-Player.prototype.draw = function() {
-    this.ctx.fillRect(this.x, this.y, this.width, this.height);
+
+Player.prototype.updateFrames = function () {
+    this.frameCount ++;
+    if(this.attacking === false){
+        if(this.frameCount > 4){
+            this.countSprites++;
+            this.frameCount = 0;
+        }
+        if(this.countSprites >= this.spriteIndex) {
+            this.countSprites = 0;
+        }
+
+    }else{
+        if(this.frameCount > 2) {
+            this.countSprites2++;
+            this.frameCount = 0;
+        }
+        if(this.countSprites2 >= this.spriteIndex2){
+            this.countSprites2 = 0;
+            this.attacking = false;
+        }
+    }
 }
+
+Player.prototype.draw = function(frames) {
+    var srcY = 2041/14; 
+    var srcY2 = 1791/9;
+    if(this.attacking === false){
+        this.ctx.drawImage(this.character,0,this.countSprites*srcY,168,2041/14,this.x - 10,this.y,168,2041/14);
+    }else{
+        this.ctx.drawImage(this.attackImage,0,this.countSprites2*srcY2,240,1791/9,this.x - 50,this.y - 50,240,1791/9);
+    }
+    this.updateFrames();
+}
+
+
 
 

@@ -4,12 +4,22 @@ html {
   *, *:before, *:after {
     box-sizing: inherit;
   }
-  
-  body {
-    margin: 0;
-    padding: 0;
-  }
-  
-  canvas {
-    border: 1px solid black;
-  }
+
+body {
+  background: black;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  align-self: flex end;
+}
+
+canvas {
+  border: 1px solid black;
+}
+
+.button {
+  display: block;
+  text-align: center;
+}
