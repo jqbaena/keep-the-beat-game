@@ -11,6 +11,7 @@ function main(){
     var splashScreen;
     var gameScreen;
     var startButton;
+    var restartButton;
     var gameOver;
     var victoryScreen;
     var state; // 0 Start - 1 Game - 2 Victory - 3 Game over
@@ -84,9 +85,19 @@ function main(){
         <main>
           <h1>Game over</h1> 
           <img id="gameover" src="img/Game-Over.png" width="480" height="79">
+          <div class="buttondiv">
+          <button class="button"> <img class="buttonimg" src="img/retry.png" width="250" height="100"> </button>
+          </div>    
         </main>
         `);
         document.body.prepend(gameOver);
+        restartButton = document.querySelector('button');
+        restartButton.addEventListener('click', destroyGameOver);
+    }
+
+    function destroyGameOver(){
+        gameOver.remove();
+        buildGameScreen();
     }
 }
 window.addEventListener('load', main);

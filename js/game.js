@@ -67,7 +67,7 @@ Game.prototype.startLoop = function(){
     }.bind(this)
     
     document.addEventListener('keyup', this.handleKeyUp);
-
+    this.audio.currentTime = 0;
     this.audio.play();
 
     var loop = function(){
@@ -126,6 +126,7 @@ Game.prototype.onGameOverCallback = function(callback) {
   this.gameOverCallback = callback;
 }
 Game.prototype.finishGame = function(){
+  this.audio.pause()
   this.gameOverCallback();
 }
 Game.prototype.updateAll = function(){
