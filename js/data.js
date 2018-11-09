@@ -40,147 +40,91 @@ var canvasHeight = 580;
 var platforms = [
 
     // PRIMERA PLATAFORMA
-    
     {
         width: 220,
         height: 56,
-        x: 4200,
+        x: canvasWidth*2 + 200,
         y: canvasHeight - 100
-        /*
-        compound: false,
-        object: {
-            width: 0,
-            heigth: 0,
-            x: 0,
-            y: 0,
-        }*/
-    },
-    /*
-    compound: false,
-    object: {
-        width: 0,
-        heigth: 0,
-        x: 0,
-        y: 0,
-    }*/
-
-    {
-        width: 220,
-        height: 56,
-        x: 5918 + 209 + 209,
-        y: canvasHeight - 100
-        /*
-        compound: false,
-        object: {
-            width: 0,
-            heigth: 0,
-            x: 0,
-            y: 0,
-        }*/
     },
     {
         width: 220,
         height: 56,
-        x: 5918 + 209 + 209 + 209,
+        x: canvasWidth*2 + 420,
         y: canvasHeight - 100
-        /*
-        compound: false,
-        object: {
-            width: 0,
-            heigth: 0,
-            x: 0,
-            y: 0,
-        }*/
     },
     {
         width: 220,
         height: 56,
-        x: 5918 + 209 + 209 + 209,
+        x: canvasWidth*2 + 640,
         y: canvasHeight - 100
-        /*
-        compound: false,
-        object: {
-            width: 0,
-            heigth: 0,
-            x: 0,
-            y: 0,
-        }*/
+    },
+    // SEGUNDAS PLATAFORMAS
+    {
+        width: 220,
+        height: 56,
+        x: canvasWidth*2 + 800,
+        y: canvasHeight - 200
     },
     {
         width: 220,
         height: 56,
-        x: 2900,
-        y: canvasHeight - 100
-        /*
-        compound: false,
-        object: {
-            width: 0,
-            heigth: 0,
-            x: 0,
-            y: 0,
-        }*/
+        x: canvasWidth*2 + 1020,
+        y: canvasHeight - 200
     },
     {
         width: 220,
         height: 56,
-        x: 4500,
-        y: canvasHeight - 100
-        /*
-        compound: false,
-        object: {
-            width: 0,
-            heigth: 0,
-            x: 0,
-            y: 0,
-        }*/
+        x: canvasWidth*2 + 1240,
+        y: canvasHeight - 200
+    },
+    // TERCERAS PLATAFORMAS
+    {
+        width: 220,
+        height: 56,
+        x: canvasWidth*2 + 1240 + 220,
+        y: canvasHeight - 300
     },
     {
         width: 220,
         height: 56,
-        x: 4500,
-        y: canvasHeight - 100
-        /*
-        compound: false,
-        object: {
-            width: 0,
-            heigth: 0,
-            x: 0,
-            y: 0,
-        }*/
+        x: canvasWidth*2 + 1240 + 220 + 220,
+        y: canvasHeight - 300
+    },
+    {
+        width: 220,
+        height: 56,
+        x: canvasWidth*2 + 1240 + 220 + 220 + 220,
+        y: canvasHeight - 300
     },
 
-    // SEGUNDA PLATAFORMA
+    // CUARTA OLEADA
     {
-        width: 209,
+        width: 220,
         height: 56,
-        x: 4709,
-        y: canvasHeight - 200,
-    },
-
-    // TERCERA PLATAFORMA
-    {
-        width: 209,
-        height: 56,
-        x: 4918,
-        y: canvasHeight - 200,
+        x: canvasWidth*5 - 100 - 100 ,
+        y: canvasHeight - 100,
+        type:0
     },
     {
-        width: 209,
+        width: 220,
         height: 56,
-        x: 4918 + 209,
-        y: canvasHeight - 200,
+        x: canvasWidth*5 + 220 - 100 -100,
+        y: canvasHeight - 156,
+        type:0
     },
     {
-        width: 209,
+        width: 220,
         height: 56,
-        x: 4918 + 209 + 209,
-        y: canvasHeight - 200,
+        x: canvasWidth*5 + 440 - 100 -100,
+        y: canvasHeight - 212,
+        type:0
     },
     {
-        width: 209,
+        width: 220,
         height: 56,
-        x: 4918 + 209 + 209 + 209,
-        y: canvasHeight - 200,
+        x: canvasWidth*5 + 660 - 100 -100,
+        y: canvasHeight - 268,
+        type:0
     },
 ];
 
@@ -190,23 +134,57 @@ var stageOneEnemies = [
     {
         width: 130,
         height: 62,
-        x: 3900,
-        y: canvasHeight - 67,
-        type:0
-    },
-    // SEGUNDA OLEADA
-    {
-        width: 130,
-        height: 62,
-        x: 4500,
+        x: canvasWidth*5 - 100,
         y: canvasHeight - 67,
         type:0
     },
     {
         width: 130,
         height: 62,
-        x: 5200,
+        x: canvasWidth*5 +700,
         y: canvasHeight - 67,
         type:0
-    }
+    },
+    {
+        width: 130,
+        height: 62,
+        x: canvasWidth*7 - 100,
+        y: canvasHeight - 67,
+        type:0
+    },
+    {
+        width: 130,
+        height: 62,
+        x: canvasWidth*7 +700,
+        y: canvasHeight - 67,
+        type:0
+    },
+    {
+        width: 130,
+        height: 62,
+        x: canvasWidth*8 - 100,
+        y: canvasHeight - 67,
+        type:0
+    },
+    {
+        width: 130,
+        height: 62,
+        x: canvasWidth*9 +700,
+        y: canvasHeight - 67,
+        type:0
+    },
+    {
+        width: 130,
+        height: 62,
+        x: canvasWidth*10,
+        y: canvasHeight - 67,
+        type:0
+    },
+    {
+        width: 130,
+        height: 62,
+        x: canvasWidth*11,
+        y: canvasHeight - 67,
+        type:0
+    },
 ];

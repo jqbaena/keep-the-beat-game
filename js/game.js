@@ -60,7 +60,7 @@ Game.prototype.startLoop = function(){
       if (event.key === " "){
         this.player.jump(this.obstacles);
       }
-      else if (event.key === "a"){
+      else if (event.key === "a" || event.key === "A"){
         this.player.attack();
       }
 
