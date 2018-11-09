@@ -91,10 +91,13 @@ Player.prototype.collidesWithEnemy = function(enemy){
                         ((this.y < (enemy.y + enemy.height))&& (this.y >= enemy.y)) ||
                         (enemy.y >= this.y && enemy.y + enemy.height <= this.y + this.height);
 
-    if(insideWidth && aboveTop && enemy.type !== 0 && enemy.type !== 1){
+    if(insideWidth && (aboveTop || topBottom || insideHeight) && this.attacking){
+        type = 3;   
+    }
+    else if(insideWidth && aboveTop && enemy.type !== 0 && enemy.type !== 1 && !this.attacking){
         type = 2;
     }
-    else if(insideWidth && (topBottom || insideHeight)){
+    else if(insideWidth && (topBottom || insideHeight) && !this.attacking){
         type = 1;
     }
     return type;
@@ -184,7 +187,7 @@ Player.prototype.updateFrames = function () {
         }
 
     }else{
-        if(this.frameCount > 2) {
+        if(this.frameCount === 3) {
             this.countSprites2++;
             this.frameCount = 0;
         }

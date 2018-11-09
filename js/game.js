@@ -25,7 +25,7 @@ function Game(canvasElement) {
     this.imgX6 =  this.canvasElement.width;
     this.imgY = 0;
     this.currentFrame = 0;
-    this.audio = new Audio('audio/Thriller.mp3');
+    this.audio = new Audio('audio/Queen.mp3');
    
 }
 Game.prototype.start = function() {
@@ -147,7 +147,7 @@ Game.prototype.updateAll = function(){
 
 Game.prototype.checkAllCollisions = function() {
   this.enemies.forEach(function(enemy, index){
-    if (this.player.collidesWithEnemy(enemy) === 2){
+    if (this.player.collidesWithEnemy(enemy) === 3){
         this.enemies.splice(index, 1);
     }
     else if(this.player.collidesWithEnemy(enemy) === 1){

@@ -40,10 +40,34 @@ var canvasHeight = 580;
 var platforms = [
 
     // PRIMERA PLATAFORMA
+    
     {
         width: 220,
         height: 56,
-        x: 1700,
+        x: 4200,
+        y: canvasHeight - 100
+        /*
+        compound: false,
+        object: {
+            width: 0,
+            heigth: 0,
+            x: 0,
+            y: 0,
+        }*/
+    },
+    /*
+    compound: false,
+    object: {
+        width: 0,
+        heigth: 0,
+        x: 0,
+        y: 0,
+    }*/
+
+    {
+        width: 220,
+        height: 56,
+        x: 5918 + 209 + 209,
         y: canvasHeight - 100
         /*
         compound: false,
@@ -57,7 +81,7 @@ var platforms = [
     {
         width: 220,
         height: 56,
-        x: 1900,
+        x: 5918 + 209 + 209 + 209,
         y: canvasHeight - 100
         /*
         compound: false,
@@ -71,7 +95,7 @@ var platforms = [
     {
         width: 220,
         height: 56,
-        x: 2200,
+        x: 5918 + 209 + 209 + 209,
         y: canvasHeight - 100
         /*
         compound: false,
@@ -166,7 +190,7 @@ var stageOneEnemies = [
     {
         width: 130,
         height: 62,
-        x: 2200,
+        x: 3900,
         y: canvasHeight - 67,
         type:0
     },
@@ -174,14 +198,14 @@ var stageOneEnemies = [
     {
         width: 130,
         height: 62,
-        x: 2800,
+        x: 4500,
         y: canvasHeight - 67,
         type:0
     },
     {
         width: 130,
         height: 62,
-        x: 3400,
+        x: 5200,
         y: canvasHeight - 67,
         type:0
     }
