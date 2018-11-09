@@ -126,6 +126,47 @@ var platforms = [
         y: canvasHeight - 268,
         type:0
     },
+
+    // QUINTA OLEADA
+
+    {
+        width: 220,
+        height: 56,
+        x: canvasWidth*11,
+        y: canvasHeight - 100,
+        type:0
+    },
+    {
+        width: 220,
+        height: 56,
+        x: canvasWidth*11,
+        y: canvasHeight - 156,
+        type:0
+    },
+    {
+        width: 220,
+        height: 56,
+        x: canvasWidth*11,
+        y: canvasHeight - 212,
+        type:0
+    },
+    {
+        width: 220,
+        height: 56,
+        x: canvasWidth*11,
+        y: canvasHeight - 268,
+        type:0
+    },
+    {
+        width: 220,
+        height: 56,
+        x: canvasWidth*11,
+        y: canvasHeight - 268,
+        type:0
+    },
+
+
+
 ];
 
 var stageOneEnemies = [

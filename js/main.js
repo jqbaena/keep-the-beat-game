@@ -20,8 +20,8 @@ function main(){
           <main>
             <h1>Keep the beat</h1>
             <img id="title" src="img/title.png" width="464" height="85">
-            <div class="button">
-                <button>Start</button>
+            <div class="buttondiv">
+                <button class = "button"> <img class="buttonimg" src="img/button.png" width="250" height="100"> </button>
             </div>
           </main>
         `)
