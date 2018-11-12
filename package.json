@@ -1,0 +1,27 @@
+{
+  "name": "keep-the-beat-game",
+  "version": "1.0.0",
+  "description": "## Description Keep the beat is a game that merges different styles of gaming. Platformers, runners and rythm games. The player has to try to reach the end of the level, platforms, enemies and other random hazards will put you in trouble.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jqbaena/keep-the-beat-game.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jqbaena/keep-the-beat-game/issues"
+  },
+  "homepage": "https://github.com/jqbaena/keep-the-beat-game#readme",
+  "devDependencies": {
+    "eslint": "^5.9.0",
+    "eslint-config-standard": "^12.0.0",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-node": "^8.0.0",
+    "eslint-plugin-promise": "^4.0.1",
+    "eslint-plugin-standard": "^4.0.0"
+  }
+}
