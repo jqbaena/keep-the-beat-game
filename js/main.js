@@ -1,23 +1,20 @@
-'use strict'
+'use strict';
 
-function buildDOM(html) {
-    var div = document.createElement('div');
-    div.innerHTML = html;
-    return div.children[0];
-}
+const buildDOM = (html) => {
+  let div = document.createElement('div');
+  div.innerHTML = html;
+  return div.children[0];
+};
 
-function main(){
+const main = () => {
+  let splashScreen;
+  let gameScreen;
+  let startButton;
+  let restartButton;
+  let gameOver;
 
-    var splashScreen;
-    var gameScreen;
-    var startButton;
-    var restartButton;
-    var gameOver;
-    var victoryScreen;
-    var state; // 0 Start - 1 Game - 2 Victory - 3 Game over
-    
-    function buildSplash(){   
-        splashScreen = buildDOM(`
+  const buildSplash = () => {
+    splashScreen = buildDOM(`
           <main>
             <h1>Keep the beat</h1>
             <img id="title" src="img/title.png" width="464" height="85">
@@ -25,20 +22,20 @@ function main(){
                 <button class = "button"> <img class="buttonimg" src="img/button.png" width="250" height="100"> </button>
             </div>
           </main>
-        `)
-        document.body.prepend(splashScreen);
-        startButton = document.querySelector('button');
-        startButton.addEventListener('click', destroySplash);
-    }
-    
-    function destroySplash() {
-        splashScreen.remove();
-        startButton.removeEventListener('click', destroySplash);
-        buildGameScreen();
-    }
+        `);
+    document.body.prepend(splashScreen);
+    startButton = document.querySelector('button');
+    startButton.addEventListener('click', destroySplash);
+  };
 
-    function buildGameScreen() {
-        gameScreen = buildDOM(`
+  const destroySplash = () => {
+    splashScreen.remove();
+    startButton.removeEventListener('click', destroySplash);
+    buildGameScreen();
+  };
+
+  const buildGameScreen = () => {
+    gameScreen = buildDOM(`
           <main>
             <h1>Game</h1>
             <canvas width="1280px" height="580px"></canvas> 
@@ -57,31 +54,24 @@ function main(){
           </main>
         `);
 
-        document.body.prepend(gameScreen);
-        
-        var canvasElement = document.querySelector('canvas');
+    document.body.prepend(gameScreen);
 
-        var game = new Game(canvasElement);
-        game.start();
-        game.onGameOverCallback(destroyGameScreen);
-    }
+    var canvasElement = document.querySelector('canvas');
 
-    buildSplash();
+    var game = new Game(canvasElement);
+    game.start();
+    game.onGameOverCallback(destroyGameScreen);
+  };
 
-    /*
-    setTimeout(function(){ 
-        destroyGameScreen();
-        buildGameOver();
-    }, 10000);
-    */
-   
-    function destroyGameScreen() {
-        gameScreen.remove();
-        buildGameOver();
-    }
+  buildSplash();
 
-    function buildGameOver(){
-        gameOver = buildDOM(`
+  const destroyGameScreen = () => {
+    gameScreen.remove();
+    buildGameOver();
+  };
+
+  const buildGameOver = () => {
+    gameOver = buildDOM(`
         <main>
           <h1>Game over</h1> 
           <img id="gameover" src="img/Game-Over.png" width="480" height="79">
@@ -90,16 +80,14 @@ function main(){
           </div>    
         </main>
         `);
-        document.body.prepend(gameOver);
-        restartButton = document.querySelector('button');
-        restartButton.addEventListener('click', destroyGameOver);
-    }
+    document.body.prepend(gameOver);
+    restartButton = document.querySelector('button');
+    restartButton.addEventListener('click', destroyGameOver);
+  };
 
-    function destroyGameOver(){
-        gameOver.remove();
-        buildGameScreen();
-    }
-}
+  const destroyGameOver = () => {
+    gameOver.remove();
+    buildGameScreen();
+  };
+};
 window.addEventListener('load', main);
-
-

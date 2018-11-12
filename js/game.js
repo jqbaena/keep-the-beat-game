@@ -1,6 +1,7 @@
 'use strict'
 
-function Game(canvasElement) {
+class Game {
+  constructor (canvasElement){
     this.player = null;
     this.obstacles = [];
     this.enemies = [];
@@ -26,18 +27,18 @@ function Game(canvasElement) {
     this.imgY = 0;
     this.currentFrame = 0;
     this.audio = new Audio('audio/Queen.mp3');
-   
-}
-Game.prototype.start = function() {
+  }
+
+  start (){
     this.ctx = this.canvasElement.getContext('2d');
     this.startLoop();
-}
+  }
 
-Game.prototype.updateFrames = function(){
+  updateFrames() {
     this.currentFrame++;
-}
+  }
 
-Game.prototype.startLoop = function(){
+  startLoop(){
 
     this.player = new Player(this.canvasElement, this.initialPositionPlayer);
 
@@ -83,82 +84,64 @@ Game.prototype.startLoop = function(){
 
     loop();
 
-    /*this.obstacles.push(new Enemy(this.canvasElement));*/
- 
-
-    /*var loop = function() {
-  
-      if (Math.random() > 0.97) {
-        this.enemies.push(new Enemy(this.canvasElement));
-      }
-  
-      this.checkAllCollisions();
-      this.updateAll();
-      this.clearAll();
-      this.drawAll();
-  
-      if (!this.gameIsOver) {
-        requestAnimationFrame(loop);
-      }
-    }.bind(this);
-  
-    loop();*/
-}
-Game.prototype.clearAll = function(){
-  this.ctx.clearRect(0, 0, this.canvasElement.width, this.canvasElement.height);
-
-  this.enemies = this.enemies.filter(function(enemy) {
-    return enemy.isInCanvas();
-  });
-}
-
-Game.prototype.drawAll = function(){
-  this.drawCanvas();
-  this.player.draw();
-  this.obstacles.forEach(function(item){
-    item.draw();
-  });
-  this.enemies.forEach(function(item){
-    item.draw();
-  });
-}
-Game.prototype.onGameOverCallback = function(callback) {
-  this.gameOverCallback = callback;
-}
-Game.prototype.finishGame = function(){
-  this.audio.pause()
-  this.gameOverCallback();
-}
-Game.prototype.updateAll = function(){
-
-  this.updateFrames();
-  this.obstacles.forEach(function(item){
-    item.update();
-  });
-
-  if(this.player.update(this.obstacles, this.enemies)){
-    this.gameIsOver = true;
-    this.finishGame();
   }
-  this.enemies.forEach(function(item){
-    item.update();
-  });
-  this.updateCanvas();
-}
 
-Game.prototype.checkAllCollisions = function() {
-  this.enemies.forEach(function(enemy, index){
-    if (this.player.collidesWithEnemy(enemy) === 3){
-        this.enemies.splice(index, 1);
-    }
-    else if(this.player.collidesWithEnemy(enemy) === 1){
+  clearAll() {
+    this.ctx.clearRect(0, 0, this.canvasElement.width, this.canvasElement.height);
+    this.enemies = this.enemies.filter(function(enemy) {
+      return enemy.isInCanvas();
+    });
+  }
+
+  drawAll() {
+    this.drawCanvas();
+    this.player.draw();
+    this.obstacles.forEach(function(item){
+      item.draw();
+    });
+    this.enemies.forEach(function(item){
+      item.draw();
+    });
+  }
+
+  onGameOverCallback (callback) {
+    this.gameOverCallback = callback;
+  }
+
+  finishGame() {
+    this.audio.pause();
+    this.gameOverCallback();
+  }
+
+  updateAll() {
+    this.updateFrames();
+    this.obstacles.forEach(function(item){
+      item.update();
+    });
+  
+    if(this.player.update(this.obstacles, this.enemies)){
       this.gameIsOver = true;
-        this.finishGame();
+      this.finishGame();
     }
-    }.bind(this)); 
-}
-Game.prototype.updateCanvas = function() {
+    this.enemies.forEach(function(item){
+      item.update();
+    });
+    this.updateCanvas();
+  }
 
+  checkAllCollisions () {
+    this.enemies.forEach( (enemy, index) => {
+      if (this.player.collidesWithEnemy(enemy) === 3){
+          this.enemies.splice(index, 1);
+      }
+      else if(this.player.collidesWithEnemy(enemy) === 1){
+        this.gameIsOver = true;
+          this.finishGame();
+      }
+    }) 
+  }
+
+  updateCanvas () {
     this.imgX -= 2;
     this.imgX2 -= 2;
     this.imgX3 -= 1;
@@ -184,8 +167,9 @@ Game.prototype.updateCanvas = function() {
     if(this.imgX6 <= -this.canvasElement.width){
       this.imgX6 = this.imgX5+this.canvasElement.width;
     }
-}
-Game.prototype.drawCanvas = function(){
+  }
+
+  drawCanvas () {
     this.ctx.drawImage(this.sky,0,0, 1920, 1080, this.imgX, this.imgY, 1280, 580);
     this.ctx.drawImage(this.sky,0,0, 1920, 1080, this.imgX2, this.imgY, 1280, 580);
     this.ctx.drawImage(this.cloud,0,0, 1920, 1080, this.imgX3, this.imgY, 1280, 580);
@@ -196,4 +180,5 @@ Game.prototype.drawCanvas = function(){
     this.ctx.drawImage(this.sand,0,0, 1920, 1080, this.imgX6, this.imgY, 1280, 580);
     this.ctx.drawImage(this.decor,0,0, 1920, 1080, this.imgX5, this.imgY, 1280, 580);
     this.ctx.drawImage(this.decor,0,0, 1920, 1080, this.imgX6, this.imgY, 1280, 580);
+  }
 }

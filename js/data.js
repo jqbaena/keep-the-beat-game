@@ -1,43 +1,7 @@
-// var platform1 = {
-//     width: 300,
-//     heigth: 200,
-//     x: 500,
-//     y: 500,
-//     /*
-//     compound: false,
-//     object: {
-//         width: 0,
-//         heigth: 0,
-//         x: 0,
-//         y: 0,
-//     }*/
-// };
+const canvasWidth = 1280;
+const canvasHeight = 580;
 
-// var platform2 = {
-//     width: 600,
-//     heigth: 200,
-//     x: 1000,
-//     y: 500,
-// };
-
-// var platform3 = {
-//     width: 300,
-//     heigth: 200,
-//     x: 1500,
-//     y: 700,
-// };
-
-// var platform4 = {
-//     width: 600,
-//     heigth: 200,
-//     x: 1000,
-//     y: 300,
-// };
-
-var canvasWidth = 1280;
-var canvasHeight = 580;
-
-var platforms = [
+const platforms = [
 
   // PRIMERA PLATAFORMA
   {
@@ -167,7 +131,7 @@ var platforms = [
 
 ];
 
-var stageOneEnemies = [
+const stageOneEnemies = [
 
   // PRIMERA OLEADA
   {
